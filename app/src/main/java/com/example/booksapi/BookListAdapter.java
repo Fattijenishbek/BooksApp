@@ -37,8 +37,11 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         holder.mTitleView.setText(mValues.get(position).title);
         String authorsString = "by " + mValues.get(position).authors;
         holder.mAuthorsView.setText(authorsString);
+        holder.mRatingView.setText(mValues.get(position).rating);
+        holder.mPublishedDateView.setText(mValues.get(position).publishedDate);
+        holder.mPagesView.setText(mValues.get(position).pages);
         String smallThumbnailLink = mValues.get(position).smallThumbnailLink;
-        Picasso.with(mContext).load(smallThumbnailLink).into(holder.mBookCoverView);
+        Picasso.with(mContext).load(smallThumbnailLink.replace("http","https")).into(holder.mBookCoverView);
 
     }
 
@@ -55,6 +58,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         public final TextView mTitleView;
         public final TextView mAuthorsView;
         public final ImageView mBookCoverView;
+        public final TextView mRatingView;
+        public final TextView mPublishedDateView;
+        public final TextView mPagesView;
         public Book mItem;
 
         public ViewHolder(View view) {
@@ -62,6 +68,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
             mTitleView = (TextView) view.findViewById(R.id.title);
             mAuthorsView = (TextView) view.findViewById(R.id.authors);
             mBookCoverView = (ImageView) view.findViewById(R.id.book_cover);
+            mRatingView = (TextView) view.findViewById(R.id.rating);
+            mPublishedDateView = (TextView) view.findViewById(R.id.publishedDate);
+            mPagesView = (TextView) view.findViewById(R.id.pages);
         }
     }
 }

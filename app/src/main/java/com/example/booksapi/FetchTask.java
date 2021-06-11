@@ -90,6 +90,30 @@ class FetchTask extends AsyncTask<String, Void, ArrayList<Book>> {
                             }
                         }
                     }
+
+                    //Rating of book
+                    String rating ="";
+                    try{
+                        rating = "Rating: "+ bookVolumeInfo.getString("averageRating")+"/5";
+                    }catch (JSONException ignored){
+                        rating = "Not rated";
+                    }
+
+                    //Published Date
+                    String publishedDate = "";
+                    try{
+                        publishedDate = "Published: "+bookVolumeInfo.getString("publishedDate");
+                    }catch (JSONException ignored){
+                    }
+
+                    //Page count
+                    String pages = "";
+                    try{
+                        pages = bookVolumeInfo.getString("pageCount") + " pages";
+                    }catch (JSONException ignored){
+                        pages = "Unknown pages";
+                    }
+
                     //------------------------------------------------------------------------------
                     // IMAGE LINKS
                     //------------------------------------------------------------------------------
@@ -103,10 +127,10 @@ class FetchTask extends AsyncTask<String, Void, ArrayList<Book>> {
                     if ( bookImageLinks == null){
                         bookSmallThumbnail = "null";
                     }else{
-                        bookSmallThumbnail  = bookImageLinks.getString("smallThumbnail");
+                        bookSmallThumbnail  = bookImageLinks.getString("thumbnail");
                     }
                     // Create a Book object
-                    Book mBook = new Book(bookTitle, bookAuthorsString, bookSmallThumbnail);
+                    Book mBook = new Book(bookTitle, bookAuthorsString, bookSmallThumbnail,rating, publishedDate, pages);
                     // Add it to the array
                     parsedResults.add(i, mBook);
                 }

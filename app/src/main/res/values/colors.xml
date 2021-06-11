@@ -9,4 +9,7 @@
     <!--Book List-->
     <color name="book_list_authors">#616161</color>
     <color name="divider_color">#BDBDBD</color>
+    <color name="rating_color">#FFC107</color>
+    <color name="date_color">#03A9F4</color>
+    <color name="page_color">#0B0000</color>
 </resources>
